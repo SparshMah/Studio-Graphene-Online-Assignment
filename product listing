@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Listing</title>
+</head>
+<body>
+    <div id="products"></div>
+    <script>
+        const productsDiv = document.getElementById('products');
+
+        // Fetch products from the API
+        fetch('https://api.escuelajs.co/api/v1/products')
+            .then(response => response.json())
+            .then(products => {
+                // Display products
+                products.forEach(product => {
+                    const productDiv = document.createElement('div');
+                    productDiv.textContent = `Product Name: ${product.name}, Category: ${product.category}`;
+                    productsDiv.appendChild(productDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    </script>
+</body>
+</html>
