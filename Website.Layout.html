@@ -1,111 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="wor.css">
+    <title>Dynamic Navigation Menu</title>
 </head>
-<body bgcolor="#d2d1e9">
-    <table width="1520px" height="80px">
-        <th><center><h1 style="font-size: 50px;">My Website</h1>
-        <p>Resize the brouser window to see the effect,</p></center>
-        </th>
-        <tr>
-        <td colspan="1" width="1100px" height="30px" bgcolor="black" style="color: white;"> Link  &nbsp; &nbsp; &nbsp; Link  &nbsp; &nbsp; &nbsp; Link &nbsp;
-             &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-              &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-               &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
-               &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; 
-               &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
-                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
-                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  Link</td>
-        </tr>
-        <br><br>
+<body>
+    <nav id="top-menu"></nav>
+    <script>
+        const navbar = [
+            { name: 'Home', id: 'home'},
+            { name: 'About', id: 'about' },
+            { name: 'Our Products', id: 'product', child: [
+                { name: 'Product 1', id: 'p1'},
+                { name: 'Product 2', id: 'p2' },
+                { name: 'Product 3', id: 'p3'},
+                { name: 'Product 4', id: 'p4' },
+            ] },
+            { name: 'Contact Us', id: 'contact'},
+        ];
 
-</table>
+        const topMenu = document.getElementById('top-menu');
+        const ul = document.createElement('ul');
 
-     <div style="width: 70%; float: left;">
-    <br><br>
-    <div>
-     <div><h2>TITLE HEADING</h2>
-    <p>Title description , Dec 7 , 2017</p>
-     </div>
-     <di v>
-        <div style="background-color:#aface6 ;  padding: 90px 25px;" height="130px" width="300px">&nbsp;&nbsp;Image</div>
-     </div>
-     <div>
-        <div>Some text.... 
-            <br><br>
-            HTML stands for HyperText Markup Language. It is a standard markup language for web page creation.
-             It allows the creation and structure of sections, paragraphs, and links using HTML elements
+        navbar.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item.name;
 
-        </div>
-    </div>
-    </div>
-    </div>
-<br><br><br>
+            if (item.child) {
+                const subUl = document.createElement('ul');
+                item.child.forEach(childItem => {
+                    const subLi = document.createElement('li');
+                    subLi.textContent = childItem.name;
+                    subUl.appendChild(subLi);
+                });
+                li.appendChild(subUl);
+            }
 
-    <div style="width: 25%; float: right;">
-        <table  height="100px">
-            <th><h2>ABOUT ME</h2>
-            </th>
-            <tr>
-               <td style="background-color:#adaae4 ;" height="130px" width="300px">&nbsp;&nbsp;Image</td>
-            </tr>
-            <tr>
-               <td>Some text.... 
-                   <br><br>
-                   HTML stands for HyperText Markup Language. It is a standard markup language for web page creation.
-                    It allows the creation and structure of sections, paragraphs, and links using HTML elements
-       
-               </td>
-            </tr>
-        </table>
-    </div>
+            ul.appendChild(li);
+        });
 
+        topMenu.appendChild(ul);
+    </script>
+</body>
+</html>
 
-
-    <br><br>
-
-    <div style="width: 70%; float: left;">
-        <br><br>
-        <div>
-         <div><h2>TITLE HEADING</h2>
-        <p>Title description , Dec 7 , 2017</p>
-         </div>
-         <di v>
-            <div style="background-color:#a8a5e5 ;  padding: 90px 0;" height="130px" width="300px">&nbsp;&nbsp;Image</div>
-         </div>
-         <div>
-            <div>Some text.... 
-                <br><br>
-                HTML stands for HyperText Markup Language. It is a standard markup language for web page creation.
-                 It allows the creation and structure of sections, paragraphs, and links using HTML elements
-    
-            </div>
-        </div>
-        </div>
-        </div>
-
-          <br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br>
-
-       <br><br><br><br>
-       <div style="width: 25%; float: right;">
-        <table  height="90px">
-            <th><h2>POPULAR POST</h2>
-            </th>
-            <tr>
-               <td style="background-color:#b4b1e5 ;" height="200px" width="300px">&nbsp;&nbsp;Image
-            <br><br><br><br>
-            &nbsp;&nbsp;Images
-            <br><br><br><br>
-            &nbsp;&nbsp;Images
-            </td>
-            </tr>
         </table>
     </div>
     <br><br><br><br><br><br><br><br>
