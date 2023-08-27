@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banner Example</title>
+</head>
+<body>
+    <div id="banner">
+        <h1>Fresh 2022 look</h1>
+    </div>
+</body>
+</html>
